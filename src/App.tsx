@@ -1,9 +1,11 @@
+import { Provider } from 'react-redux';
+
+import { store } from './core/store';
+
 import { BooksContainer } from './features/books/containers/BooksContainer';
 
 export const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <BooksContainer />
-    </header>
-  </div>
+  <Provider store={store}>
+    <BooksContainer />
+  </Provider>
 );
