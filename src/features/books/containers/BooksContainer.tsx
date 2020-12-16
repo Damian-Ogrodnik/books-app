@@ -9,7 +9,7 @@ export const BooksContainer: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooksAsync.request('dsad'));
+    dispatch(getBooksAsync.request('random'));
   }, [dispatch]);
 
   return (

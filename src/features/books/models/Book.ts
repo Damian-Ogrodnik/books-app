@@ -1,4 +1,9 @@
 export interface Book {
-  id: number;
-  value: string;
+  id: string;
+  selfLink: string;
+  volumeInfo: {
+    title: string;
+    authors: string[];
+    description: string;
+  };
 }

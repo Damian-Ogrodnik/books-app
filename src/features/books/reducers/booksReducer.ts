@@ -3,16 +3,16 @@ import { createReducer } from 'typesafe-actions';
 import { AppAction } from 'common/models/actionModel';
 
 import * as actions from '../actions/booksActions';
-import { Book } from '../models';
+import { BooksData } from '../models';
 
 export interface BooksState {
-  books: Book[];
+  booksData?: BooksData;
   isFetchingBooks: boolean;
   error: string;
 }
 
 export const defaultBooksState: BooksState = {
-  books: [],
+  booksData: undefined,
   isFetchingBooks: false,
   error: '',
 };
@@ -25,7 +25,7 @@ export const booksReducer = createReducer<BooksState, AppAction>(defaultBooksSta
   .handleAction(actions.getBooksAsync.success, (state, action) => ({
     ...state,
     isFetchingBooks: false,
-    books: action.payload,
+    booksData: action.payload,
   }))
   .handleAction(actions.getBooksAsync.failure, (state, action) => ({
     ...state,
