@@ -3,40 +3,32 @@ import { createReducer } from 'typesafe-actions';
 import { AppAction } from 'common/models/actionModel';
 
 import * as actions from '../actions/booksActions';
+import { Book } from '../models';
 
 export interface BooksState {
-  products: any;
+  books: Book[];
+  isFetchingBooks: boolean;
+  error: string;
 }
 
 export const defaultBooksState: BooksState = {
-  products: [],
+  books: [],
+  isFetchingBooks: false,
+  error: '',
 };
 
 export const booksReducer = createReducer<BooksState, AppAction>(defaultBooksState)
-  .handleAction(actions.getProductsAsync.request, state => ({
+  .handleAction(actions.getBooksAsync.request, state => ({
     ...state,
-    isFetchingProducts: true,
+    isFetchingBooks: true,
   }))
-  .handleAction(actions.getProductsAsync.success, (state, action) => ({
+  .handleAction(actions.getBooksAsync.success, (state, action) => ({
     ...state,
-    isFetchingProducts: false,
-    products: action.payload.products,
-    meta: action.payload.meta,
+    isFetchingBooks: false,
+    books: action.payload,
   }))
-  .handleAction(actions.getProductsAsync.failure, (state, action) => ({
+  .handleAction(actions.getBooksAsync.failure, (state, action) => ({
     ...state,
-    isFetchingProducts: false,
-    networkError: action.payload,
-  }))
-  .handleAction(actions.setSearchProductsParse, (state, action) => ({
-    ...state,
-    searchParse: action.payload,
-  }))
-  .handleAction(actions.setActiveProductsFilter, (state, action) => ({
-    ...state,
-    activeFilter: action.payload,
-  }))
-  .handleAction(actions.setPromoProductsFilter, (state, action) => ({
-    ...state,
-    promoFilter: action.payload,
+    isFetchingBooks: false,
+    error: action.payload,
   }));

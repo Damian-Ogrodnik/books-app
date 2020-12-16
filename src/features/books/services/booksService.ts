@@ -1,9 +1,12 @@
 import { map } from 'rxjs/operators';
 
-// import { HttpService } from 'common/services/httpService';
-// import { apiEndpoints } from 'config/apiConfig';
-// import { ProductsData, TransformedProductsData, GetProductsPayload } from '../models/productModels';
+import { apiEndpoints } from 'config/apiConfig';
+import { HttpService } from 'common/services/httpService';
 
 export class BooksService {
-  constructor(private readonly httpService: () => null) {}
+  constructor(private readonly httpService: HttpService) {}
+
+  getBooks(data?: any) {
+    return this.httpService.GET<any>(`${apiEndpoints.books}?q=flowers`).pipe(map(data => data));
+  }
 }

@@ -1,6 +1,6 @@
-// import { BASE_URL } from 'config/apiConfig';
-// import { HttpService } from 'common/services/httpService';
-// import { ProductsService } from 'features/products/services/productsServices';
+import { BASE_URL } from 'config/apiConfig';
+import { HttpService } from 'common/services/httpService';
+import { BooksService } from 'features/books/services/booksService';
 
-export const httpService = null;
-export const booksService = () => null;
+export const httpService = new HttpService(BASE_URL);
+export const booksService = new BooksService(httpService);
