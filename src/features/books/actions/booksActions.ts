@@ -1,6 +1,6 @@
-import { createAsyncAction } from 'typesafe-actions';
+import { createAsyncAction, createAction } from 'typesafe-actions';
 
-import { BooksData } from '../models';
+import { BooksData, NextPagePayload } from '../models';
 
 export const getBooksAsync = createAsyncAction(
   'GET_BOOKS_REQUESTED',
@@ -8,6 +8,10 @@ export const getBooksAsync = createAsyncAction(
   'GET_BOOKS_FAILED',
 )<string, BooksData, string>();
 
-// export const setSearchProductsParse = createAction('SET_SEARCH_PRODUCTS_PARSE')<string>();
-// export const setPromoProductsFilter = createAction('SET_PROMO_PRODUCTS_FILTER')<boolean>();
-// export const setActiveProductsFilter = createAction('SET_ACTIVE_PRODUCTS_FILTER')<boolean>();
+export const getNextBooksAsync = createAsyncAction(
+  'GET_NEXT_BOOKS_REQUESTED',
+  'GET_NEXT_BOOKS_SUCCEED',
+  'GET_NEXT_BOOKS_FAILED',
+)<NextPagePayload, BooksData, string>();
+
+export const setNextBookIndex = createAction('SET_NEXT_BOOK_INDEX')<void>();

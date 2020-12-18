@@ -2,17 +2,12 @@ import { createSelector } from 'reselect';
 
 import { AppState } from 'common/models/appStateModel';
 
-export const getCandidateViewState = (state: AppState) => state.booksState;
-export const getIsFetchingBooks = createSelector(
-  getCandidateViewState,
-  state => state.isFetchingBooks,
-);
+export const getBooksState = (state: AppState) => state.booksState;
+export const getIsFetchingBooks = createSelector(getBooksState, state => state.isFetchingBooks);
 export const getFoundedBooksNumber = createSelector(
-  getCandidateViewState,
+  getBooksState,
   state => state.booksData?.totalItems,
 );
-export const getBooks = createSelector(
-  getCandidateViewState,
-  state => state.booksData?.items || [],
-);
-export const getBooksError = createSelector(getCandidateViewState, state => state.error);
+export const getBooks = createSelector(getBooksState, state => state.booksData?.items || []);
+export const getBooksError = createSelector(getBooksState, state => state.error);
+export const getNextBookIndex = createSelector(getBooksState, state => state.nextBookIndex);
