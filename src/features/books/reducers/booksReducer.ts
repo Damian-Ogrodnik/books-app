@@ -45,7 +45,9 @@ export const booksReducer = createReducer<BooksState, AppAction>(defaultBooksSta
     isFetchingBooks: false,
     booksData: state.booksData && {
       ...state.booksData,
-      items: [...state.booksData.items, ...action.payload.items],
+      items: action.payload.items
+        ? [...state.booksData.items, ...action.payload.items]
+        : state.booksData.items,
     },
   }))
   .handleAction(actions.getNextBooksAsync.failure, (state, action) => ({

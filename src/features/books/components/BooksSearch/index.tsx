@@ -1,11 +1,12 @@
 import { ChangeEvent, FormEvent } from 'react';
 
 import { SearchPayload } from 'features/books/models';
+
 import * as S from './styles';
 
 interface BooksSearchProps {
   searchState: SearchPayload;
-  handleChange(e: ChangeEvent<HTMLInputElement>): void;
+  handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>): void;
   handleSearch(e: FormEvent<HTMLFormElement>): void;
 }
 
@@ -34,16 +35,6 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
           value={bookAuthor}
           onChange={handleChange}
           placeholder="Book Author"
-        />
-      </label>
-      <label htmlFor="bookLanguage">
-        Language
-        <input
-          type="text"
-          name="bookLanguage"
-          value={bookLanguage}
-          onChange={handleChange}
-          placeholder="Book language"
         />
       </label>
       <button type="submit">Search</button>

@@ -27,7 +27,7 @@ export const BooksContainer: React.FC = () => {
     return () => booksFetchScrollListener.unsubscribe();
   }, [searchState, nextBookIndex, dispatch]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setSearchState(prevState => ({
       ...prevState,
