@@ -11,8 +11,13 @@ export class BooksService {
   getBooks({ bookTitle, bookAuthor, bookLanguage, nextBookIndex }: NextPagePayload) {
     return this.httpService
       .GET<BooksData>(
-        `${apiEndpoints.books}?q=intitle:${bookTitle}+inauthor:${bookAuthor}&startIndex=${nextBookIndex}&langRestrict=${bookLanguage}&maxResults=${this.booksOnRequest}
-        `,
+        `${apiEndpoints.books}?q=
+        ${bookTitle && `intitle:${bookTitle}`}
+        ${bookAuthor && `+inauthor:${bookAuthor}`}
+        &startIndex=${nextBookIndex}
+        &langRestrict=${bookLanguage}
+        &maxResults=${this.booksOnRequest}
+        `.replace(/ /g, ''),
       )
       .pipe(map(data => data));
   }
