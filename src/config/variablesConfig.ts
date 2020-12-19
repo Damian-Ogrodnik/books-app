@@ -3,6 +3,7 @@ export const fontFamily = {
 };
 
 export const fontSize = {
+  tiny: '10px',
   small: '14px',
   normal: '18px',
   big: '24px',
@@ -10,5 +11,7 @@ export const fontSize = {
 
 export const colors = {
   white: '#FFFFFF',
+  black: '#000000',
   lightGray: '#F2F3F7',
+  lightOrange: '#FC7C41',
 };
