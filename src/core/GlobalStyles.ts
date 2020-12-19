@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { fontFamily, fontSize } from 'config/variablesConfig';
+import { fontFamily, fontSize, colors } from 'config/variablesConfig';
 
 export const GlobalStyles = createGlobalStyle`
     html, body, #root {
@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     body {
         margin: 0;
         font-family: ${fontFamily.primary};
-        font-size: ${fontSize.normal}
+        font-size: ${fontSize.normal};
+        background-color: ${colors.lightGray}
     }
 `;

@@ -14,9 +14,10 @@ export class BooksService {
         `${apiEndpoints.books}?q=
         ${bookTitle && `intitle:${bookTitle}`}
         ${bookAuthor && `+inauthor:${bookAuthor}`}
-        &startIndex=${nextBookIndex}
-        &langRestrict=${bookLanguage}
-        &maxResults=${this.booksOnRequest}
+        ${nextBookIndex && `&startIndex=${nextBookIndex}`}
+        ${bookLanguage && `&langRestrict=${bookLanguage}`}
+        ${this.booksOnRequest && `&maxResults=${this.booksOnRequest}`}
+        &projection=full
         `.replace(/ /g, ''),
       )
       .pipe(map(data => data));

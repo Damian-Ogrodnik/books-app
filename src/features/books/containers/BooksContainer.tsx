@@ -5,7 +5,7 @@ import { fromEvent } from 'rxjs';
 import { BooksList } from '../components/BooksList';
 import { BooksSearch } from '../components/BooksSearch';
 import { getBooksAsync, getNextBooksAsync } from '../actions/booksActions';
-import { getBooks, getNextBookIndex } from '../selectors/booksSelector';
+import { getBooks, getIsFetchingBooks, getNextBookIndex } from '../selectors/booksSelector';
 import { SearchPayload } from '../models';
 
 export const BooksContainer: React.FC = () => {
@@ -16,6 +16,7 @@ export const BooksContainer: React.FC = () => {
   });
   const books = useSelector(getBooks);
   const nextBookIndex = useSelector(getNextBookIndex);
+  const isFetchingBooks = useSelector(getIsFetchingBooks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +27,9 @@ export const BooksContainer: React.FC = () => {
     });
     return () => booksFetchScrollListener.unsubscribe();
   }, [searchState, nextBookIndex, dispatch]);
+
+  const checkIfInstructionIsNeeded = () =>
+    Object.values(searchState).every(searchPhrase => !searchPhrase) && !books.length;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -47,7 +51,11 @@ export const BooksContainer: React.FC = () => {
         handleChange={handleChange}
         handleSearch={handleSearch}
       />
-      <BooksList books={books} />
+      {checkIfInstructionIsNeeded() ? (
+        <div>Type to search</div>
+      ) : (
+        <BooksList books={books} isFetchingBooks={isFetchingBooks} />
+      )}
     </div>
   );
 };

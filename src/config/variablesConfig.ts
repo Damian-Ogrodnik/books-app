@@ -9,12 +9,6 @@ export const fontSize = {
 };
 
 export const colors = {
-  white: '#ffffff',
-  veryLightGray: '#F2F2F2',
-  brightBlue: '#4460F7',
-  vividBlue: '#2140E8',
-  lightGrayishBlue: '#e0e2ea',
-  manatee: '#9194A5',
-  lightningYellow: '#F9A52B',
-  persianBlue: '#2140E8',
+  white: '#FFFFFF',
+  lightGray: '#F2F3F7',
 };

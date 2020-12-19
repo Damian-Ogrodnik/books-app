@@ -24,6 +24,7 @@ export const booksReducer = createReducer<BooksState, AppAction>(defaultBooksSta
   .handleAction(actions.getBooksAsync.request, state => ({
     ...state,
     isFetchingBooks: true,
+    booksData: undefined,
   }))
   .handleAction(actions.getBooksAsync.success, (state, action) => ({
     ...state,

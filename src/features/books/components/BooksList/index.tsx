@@ -1,16 +1,18 @@
-import { Book } from 'features/books/models';
+import { Book as BookData } from 'features/books/models';
+
+import * as S from './styles';
+import { Book } from '../Book';
 
 interface BooksListProps {
-  books: Book[];
+  books: BookData[];
+  isFetchingBooks: boolean;
 }
 
-export const BooksList: React.FC<BooksListProps> = ({ books }) => (
-  <main>
+export const BooksList: React.FC<BooksListProps> = ({ books, isFetchingBooks }) => (
+  <S.BooksList>
     {books.map(book => (
-      <div key={book.id}>
-        <h3>{book.volumeInfo.title}</h3>
-        <p>{book.volumeInfo.description}</p>
-      </div>
+      <Book key={book.id} {...book} />
     ))}
-  </main>
+    {isFetchingBooks && <div>Loading</div>}
+  </S.BooksList>
 );
