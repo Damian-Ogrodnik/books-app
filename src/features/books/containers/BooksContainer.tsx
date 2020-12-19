@@ -9,18 +9,21 @@ import { getBooks, getNextBookIndex } from '../selectors/booksSelector';
 
 export const BooksContainer: React.FC = () => {
   const [bookTitle, setBookTitle] = useState('');
+  const [bookAuthor, setBookAuthor] = useState('');
+  const [bookLanguage, setBookLanguage] = useState('');
+
   const books = useSelector(getBooks);
   const nextBookIndex = useSelector(getNextBookIndex);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooksAsync.request('random'));
+    dispatch(getBooksAsync.request({ bookTitle, bookAuthor, bookLanguage }));
   }, []);
 
   useEffect(() => {
     const booksFetchScrollListener = fromEvent(window, 'scroll').subscribe(() => {
       if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight) {
-        dispatch(getNextBooksAsync.request({ searchPhrase: 'random', nextBookIndex }));
+        dispatch(getNextBooksAsync.request({ bookTitle, bookAuthor, bookLanguage, nextBookIndex }));
       }
     });
 
@@ -29,7 +32,7 @@ export const BooksContainer: React.FC = () => {
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(getBooksAsync.request(bookTitle));
+    dispatch(getBooksAsync.request({ bookTitle, bookAuthor, bookLanguage }));
   };
 
   return (
