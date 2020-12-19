@@ -20,6 +20,10 @@ export const Book = styled.section`
 
 export const Title = styled.h3`
   font-size: ${fontSize.big};
+
+  ${mediaQueriesHelper.small} {
+    font-size: ${fontSize.normal};
+  }
 `;
 
 export const CoverImage = styled.img`
@@ -27,7 +31,43 @@ export const CoverImage = styled.img`
   width: 10rem;
 `;
 
+export const BookDetails = styled.div`
+  width: 100%;
+`;
+
 export const Author = styled.p`
   font-size: ${fontSize.small};
   font-style: italic;
+  text-transform: capitalize;
+`;
+
+export const Button = styled.button`
+  cursor: pointer;
+  display: block;
+  background-color: ${colors.lightOrange};
+  color: ${colors.white};
+  border: 3px solid ${colors.lightOrange};
+  border-radius: 10px;
+  text-transform: uppercase;
+  padding: 0.5rem;
+`;
+
+export const DescriptionButton = styled(Button)`
+  display: none;
+  ${mediaQueriesHelper.medium} {
+    display: block;
+  }
+`;
+
+interface BookDescriptionProps {
+  showDescription: boolean;
+}
+
+export const BookDescription = styled.p<BookDescriptionProps>`
+  display: block;
+  text-align: justify;
+
+  ${mediaQueriesHelper.small} {
+    display: ${({ showDescription }) => (showDescription ? 'block' : 'none')};
+  }
 `;
