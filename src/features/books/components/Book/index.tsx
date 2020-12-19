@@ -12,6 +12,7 @@ export const Book: React.FC<BookData> = ({ volumeInfo }) => (
     <div>
       <S.Title>{volumeInfo.title}</S.Title>
       <p>{volumeInfo.description || 'No description provided'}</p>
+      <S.Author>{volumeInfo.authors ? volumeInfo.authors.join(', ') : 'No author data'}</S.Author>
     </div>
   </S.Book>
 );

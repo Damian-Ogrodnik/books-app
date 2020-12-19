@@ -19,3 +19,8 @@ export const CoverImage = styled.img`
   height: 15rem;
   width: 10rem;
 `;
+
+export const Author = styled.p`
+  font-size: ${fontSize.small};
+  font-style: italic;
+`;

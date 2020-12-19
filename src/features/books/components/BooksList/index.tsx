@@ -14,6 +14,6 @@ export const BooksList: React.FC<BooksListProps> = ({ books, isFetchingBooks }) 
     {books.map((book, index) => (
       <Book key={`${book.id}${index}`} {...book} />
     ))}
-    {isFetchingBooks ? <Spinner /> : !books.length ? <div>Nothing found</div> : null}
+    {isFetchingBooks && <Spinner />}
   </S.BooksList>
 );

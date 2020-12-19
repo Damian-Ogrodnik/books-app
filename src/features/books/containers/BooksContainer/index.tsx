@@ -2,16 +2,17 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fromEvent } from 'rxjs';
 
-import { BooksList } from '../components/BooksList';
-import { BooksSearch } from '../components/BooksSearch';
-import { getBooksAsync, getNextBooksAsync } from '../actions/booksActions';
+import { BooksList } from '../../components/BooksList';
+import { BooksSearch } from '../../components/BooksSearch';
+import { getBooksAsync, getNextBooksAsync } from '../../actions/booksActions';
 import {
   getBooks,
   getIsFetchingBooks,
   getNextBookIndex,
   getNumberOfFoundedBooks,
-} from '../selectors/booksSelector';
-import { SearchPayload } from '../models';
+} from '../../selectors/booksSelector';
+import { SearchPayload } from '../../models';
+import * as S from './styles';
 
 export const BooksContainer: React.FC = () => {
   const [searchState, setSearchState] = useState<SearchPayload>({
@@ -19,6 +20,8 @@ export const BooksContainer: React.FC = () => {
     bookAuthor: '',
     bookLanguage: '',
   });
+  const [displayInstruction, setDisplayInstruction] = useState(true);
+
   const books = useSelector(getBooks);
   const nextBookIndex = useSelector(getNextBookIndex);
   const numberOfFoundedBooks = useSelector(getNumberOfFoundedBooks);
@@ -35,10 +38,7 @@ export const BooksContainer: React.FC = () => {
       }
     });
     return () => booksFetchScrollListener.unsubscribe();
-  }, [searchState, nextBookIndex, dispatch]);
-
-  const checkIfInstructionIsNeeded = () =>
-    Object.values(searchState).every(searchPhrase => !searchPhrase) && !books.length;
+  }, [searchState, nextBookIndex, numberOfFoundedBooks, dispatch]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -50,21 +50,26 @@ export const BooksContainer: React.FC = () => {
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setDisplayInstruction(false);
     dispatch(getBooksAsync.request(searchState));
   };
 
+  const displayInformation = () =>
+    displayInstruction ? (
+      <S.Information>Enter book title or author to search.</S.Information>
+    ) : !books.length && !isFetchingBooks ? (
+      <S.Information>Nothing found...</S.Information>
+    ) : null;
+
   return (
-    <div>
+    <S.BooksContainerWrapper>
       <BooksSearch
         searchState={searchState}
         handleChange={handleChange}
         handleSearch={handleSearch}
       />
-      {checkIfInstructionIsNeeded() ? (
-        <div>Type to search</div>
-      ) : (
-        <BooksList books={books} isFetchingBooks={isFetchingBooks} />
-      )}
-    </div>
+      {displayInformation()}
+      <BooksList books={books} isFetchingBooks={isFetchingBooks} />
+    </S.BooksContainerWrapper>
   );
 };
