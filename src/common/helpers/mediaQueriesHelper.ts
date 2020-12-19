@@ -1,6 +1,6 @@
 import { breakpoints } from 'config/breakpointsConfig';
 
-const mediaQ = (size: number): string => `@media only screen and (min-width: ${size}px)`;
+const mediaQ = (size: number): string => `@media only screen and (max-width: ${size}px)`;
 
 export const mediaQueriesHelper = {
   extraSmall: mediaQ(breakpoints.extraSmall),
