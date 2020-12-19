@@ -13,4 +13,5 @@ export const Information = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: ${fontSize.big};
+  text-align: center;
 `;

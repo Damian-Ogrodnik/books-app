@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { colors, fontSize } from 'config/variablesConfig';
+import { colors } from 'config/variablesConfig';
 import Loupe from 'assets/images/loupe.svg';
 import { mediaQueriesHelper } from 'common/helpers/mediaQueriesHelper';
 
@@ -46,13 +46,6 @@ export const InputFieldWrapper = styled.div`
   ${mediaQueriesHelper.small} {
     margin: 0.25rem 0;
   }
-`;
-
-export const InputLabel = styled.label`
-  position: absolute;
-  top: -10px;
-  color: ${colors.lightOrange};
-  font-size: ${fontSize.tiny};
 `;
 
 export const InputField = styled.input`

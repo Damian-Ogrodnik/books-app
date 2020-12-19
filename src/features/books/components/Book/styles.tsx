@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { fontSize, colors } from 'config/variablesConfig';
+import { mediaQueriesHelper } from 'common/helpers/mediaQueriesHelper';
 
 export const Book = styled.section`
   display: grid;
@@ -9,6 +10,12 @@ export const Book = styled.section`
   margin: 1.5rem 0rem;
   padding: 1rem;
   background-color: ${colors.white};
+
+  ${mediaQueriesHelper.medium} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h3`

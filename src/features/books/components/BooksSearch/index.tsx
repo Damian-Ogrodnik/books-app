@@ -11,7 +11,7 @@ interface BooksSearchProps {
 }
 
 export const BooksSearch: React.FC<BooksSearchProps> = ({
-  searchState: { bookTitle, bookAuthor, bookLanguage },
+  searchState: { bookTitle, bookAuthor },
   handleChange,
   handleSearch,
 }) => (
@@ -19,7 +19,6 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
     <S.BooksSearch>
       <S.Form onSubmit={handleSearch}>
         <S.InputFieldWrapper>
-          {/* <S.InputLabel htmlFor="bookTitle">Title</S.InputLabel> */}
           <S.InputField
             type="text"
             name="bookTitle"
@@ -29,7 +28,6 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
           />
         </S.InputFieldWrapper>
         <S.InputFieldWrapper>
-          {/* <S.InputLabel htmlFor="bookAuthor">Author</S.InputLabel> */}
           <S.InputField
             type="text"
             name="bookAuthor"

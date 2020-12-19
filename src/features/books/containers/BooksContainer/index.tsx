@@ -18,7 +18,6 @@ export const BooksContainer: React.FC = () => {
   const [searchState, setSearchState] = useState<SearchPayload>({
     bookTitle: '',
     bookAuthor: '',
-    bookLanguage: '',
   });
   const [displayInstruction, setDisplayInstruction] = useState(true);
 
