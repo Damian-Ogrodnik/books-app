@@ -9,5 +9,9 @@ export const getFoundedBooksNumber = createSelector(
   state => state.booksData?.totalItems,
 );
 export const getBooks = createSelector(getBooksState, state => state.booksData?.items || []);
+export const getNumberOfFoundedBooks = createSelector(
+  getBooksState,
+  state => state.booksData?.totalItems || 0,
+);
 export const getBooksError = createSelector(getBooksState, state => state.error);
 export const getNextBookIndex = createSelector(getBooksState, state => state.nextBookIndex);

@@ -11,9 +11,9 @@ interface BooksListProps {
 
 export const BooksList: React.FC<BooksListProps> = ({ books, isFetchingBooks }) => (
   <S.BooksList>
-    {books.map(book => (
-      <Book key={book.id} {...book} />
+    {books.map((book, index) => (
+      <Book key={`${book.id}${index}`} {...book} />
     ))}
-    {isFetchingBooks && <Spinner />}
+    {isFetchingBooks ? <Spinner /> : !books.length ? <div>Nothing found</div> : null}
   </S.BooksList>
 );

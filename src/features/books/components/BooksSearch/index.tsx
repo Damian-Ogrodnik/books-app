@@ -19,8 +19,8 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
     <S.BooksSearch>
       <S.Form onSubmit={handleSearch}>
         <S.InputFieldWrapper>
-          <S.InputLabel htmlFor="bookTitle">Title</S.InputLabel>
-          <input
+          {/* <S.InputLabel htmlFor="bookTitle">Title</S.InputLabel> */}
+          <S.InputField
             type="text"
             name="bookTitle"
             value={bookTitle}
@@ -29,8 +29,8 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
           />
         </S.InputFieldWrapper>
         <S.InputFieldWrapper>
-          <S.InputLabel htmlFor="bookAuthor">Author</S.InputLabel>
-          <input
+          {/* <S.InputLabel htmlFor="bookAuthor">Author</S.InputLabel> */}
+          <S.InputField
             type="text"
             name="bookAuthor"
             value={bookAuthor}
@@ -38,7 +38,7 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
             placeholder="Book Author"
           />
         </S.InputFieldWrapper>
-        <S.SearchButton type="submit">Search</S.SearchButton>
+        <S.SearchButton type="submit" />
       </S.Form>
     </S.BooksSearch>
   </S.NavBar>
