@@ -1,9 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react';
 
 import { Book } from './index';
 import { Book as BookProps } from '../../models';
-import ReactDOM from 'react-dom';
 
 describe('<Book />', () => {
   const bookProps: BookProps = {

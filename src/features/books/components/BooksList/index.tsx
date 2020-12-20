@@ -4,7 +4,7 @@ import { Spinner } from 'common/components/Spinner';
 import * as S from './styles';
 import { Book } from '../Book';
 
-interface BooksListProps {
+export interface BooksListProps {
   books: BookData[];
   isFetchingBooks: boolean;
 }
