@@ -54,7 +54,7 @@ export const Button = styled.button`
 
 export const DescriptionButton = styled(Button)`
   display: none;
-  ${mediaQueriesHelper.medium} {
+  ${mediaQueriesHelper.small} {
     display: block;
   }
 `;
