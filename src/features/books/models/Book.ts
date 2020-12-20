@@ -3,7 +3,7 @@ export interface Book {
   selfLink: string;
   volumeInfo: {
     title: string;
-    authors: string[];
+    authors?: string[];
     description: string;
     imageLinks?: {
       thumbnail: string;
