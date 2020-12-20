@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { fontSize } from 'config/variablesConfig';
+import { mediaQueriesHelper } from 'common/helpers/mediaQueriesHelper';
 
 export const BooksContainerWrapper = styled.div`
   position: relative;
@@ -14,4 +15,9 @@ export const Information = styled.div`
   transform: translate(-50%, -50%);
   font-size: ${fontSize.big};
   text-align: center;
+
+  ${mediaQueriesHelper.medium} {
+    position: relative;
+    margin-top: 10rem;
+  }
 `;
