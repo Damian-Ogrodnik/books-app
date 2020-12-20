@@ -25,6 +25,9 @@ export const Book: React.FC<BookData> = ({ volumeInfo }) => {
         <S.Author>
           {volumeInfo.authors?.length ? volumeInfo.authors.join(', ') : 'No author data'}
         </S.Author>
+        <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
+          {showDescription ? 'Hide' : 'Show'} description
+        </S.DescriptionButton>
       </S.BookDetails>
     </S.Book>
   );

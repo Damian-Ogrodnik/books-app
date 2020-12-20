@@ -4,6 +4,7 @@ import { fromEvent } from 'rxjs';
 
 import { BooksList } from '../../components/BooksList';
 import { BooksSearch } from '../../components/BooksSearch';
+import { BookDetails } from '../../components/BookDetails';
 import { getBooksAsync, getNextBooksAsync } from '../../actions/booksActions';
 import {
   getBooks,
@@ -69,6 +70,7 @@ export const BooksContainer: React.FC = () => {
       />
       {displayInformation()}
       <BooksList books={books} isFetchingBooks={isFetchingBooks} />
+      <BookDetails />
     </S.BooksContainerWrapper>
   );
 };

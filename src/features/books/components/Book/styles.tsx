@@ -71,3 +71,5 @@ export const BookDescription = styled.p<BookDescriptionProps>`
     display: ${({ showDescription }) => (showDescription ? 'block' : 'none')};
   }
 `;
+
+export const DetailsButton = styled(Button)``;
