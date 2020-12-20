@@ -12,7 +12,7 @@ import {
   getNextBookIndex,
   getNumberOfFoundedBooks,
 } from '../../selectors/booksSelector';
-import { SearchPayload } from '../../models';
+import { BookInfo, SearchPayload } from '../../models';
 import * as S from './styles';
 
 export const BooksContainer: React.FC = () => {
@@ -21,6 +21,8 @@ export const BooksContainer: React.FC = () => {
     bookAuthor: '',
   });
   const [displayInstruction, setDisplayInstruction] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<BookInfo>();
 
   const books = useSelector(getBooks);
   const nextBookIndex = useSelector(getNextBookIndex);
@@ -54,6 +56,10 @@ export const BooksContainer: React.FC = () => {
     dispatch(getBooksAsync.request(searchState));
   };
 
+  const toogleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   const displayInformation = () =>
     displayInstruction ? (
       <S.Information>Enter book title or author to search.</S.Information>
@@ -69,8 +75,19 @@ export const BooksContainer: React.FC = () => {
         handleSearch={handleSearch}
       />
       {displayInformation()}
-      <BooksList books={books} isFetchingBooks={isFetchingBooks} />
-      <BookDetails />
+      <BooksList
+        books={books}
+        isFetchingBooks={isFetchingBooks}
+        toogleModal={toogleModal}
+        setSelectedBook={setSelectedBook}
+      />
+      {selectedBook && (
+        <BookDetails
+          selectedBook={selectedBook}
+          isModalOpen={isModalOpen}
+          toogleModal={toogleModal}
+        />
+      )}
     </S.BooksContainerWrapper>
   );
 };

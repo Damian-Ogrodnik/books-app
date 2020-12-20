@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { fontSize, colors } from 'config/variablesConfig';
 import { mediaQueriesHelper } from 'common/helpers/mediaQueriesHelper';
+import { Button } from 'common/components/styles';
 
 export const Book = styled.section`
   display: grid;
@@ -44,17 +45,6 @@ export const Author = styled.p`
   text-transform: capitalize;
 
   margin: 0;
-`;
-
-export const Button = styled.button`
-  cursor: pointer;
-  display: block;
-  background-color: ${colors.lightOrange};
-  color: ${colors.white};
-  border: 3px solid ${colors.lightOrange};
-  border-radius: 10px;
-  text-transform: uppercase;
-  padding: 0.5rem;
 `;
 
 export const DescriptionButton = styled(Button)`

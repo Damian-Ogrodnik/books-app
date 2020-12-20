@@ -1,12 +1,26 @@
 import { useState } from 'react';
 
-import { Book as BookData } from 'features/books/models';
+import { Book as BookData, BookInfo } from 'features/books/models';
 import DefaultCover from 'assets/images/DefaultCover.png';
 
 import * as S from './styles';
 
-export const Book: React.FC<BookData> = ({ volumeInfo }) => {
+interface ActionProps {
+  setSelectedBook(book: BookInfo): void;
+  toogleModal(): void;
+}
+
+export const Book: React.FC<BookData & ActionProps> = ({
+  volumeInfo,
+  toogleModal,
+  setSelectedBook,
+}) => {
   const [showDescription, setShowDescription] = useState(false);
+
+  const openDetailsModal = () => {
+    setSelectedBook(volumeInfo);
+    toogleModal();
+  };
 
   return (
     <S.Book>
@@ -28,7 +42,7 @@ export const Book: React.FC<BookData> = ({ volumeInfo }) => {
           <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
             {showDescription ? 'Hide' : 'Show'} description
           </S.DescriptionButton>
-          <S.DetailsButton>Details</S.DetailsButton>
+          <S.DetailsButton onClick={openDetailsModal}>Details</S.DetailsButton>
         </S.ButtonsWrapper>
       </S.BookDetails>
     </S.Book>
