@@ -20,6 +20,7 @@ export const Book = styled.section`
 
 export const Title = styled.h3`
   font-size: ${fontSize.big};
+  margin-bottom: 0.25rem;
 
   ${mediaQueriesHelper.small} {
     font-size: ${fontSize.normal};
@@ -33,12 +34,16 @@ export const CoverImage = styled.img`
 
 export const BookDetails = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Author = styled.p`
   font-size: ${fontSize.small};
   font-style: italic;
   text-transform: capitalize;
+
+  margin: 0;
 `;
 
 export const Button = styled.button`
@@ -73,3 +78,15 @@ export const BookDescription = styled.p<BookDescriptionProps>`
 `;
 
 export const DetailsButton = styled(Button)``;
+
+export const ButtonsWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  ${mediaQueriesHelper.medium} {
+    margin-top: 1rem;
+    justify-content: space-between;
+  }
+`;

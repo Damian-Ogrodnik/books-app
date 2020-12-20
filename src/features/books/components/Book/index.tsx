@@ -16,18 +16,20 @@ export const Book: React.FC<BookData> = ({ volumeInfo }) => {
       />
       <S.BookDetails>
         <S.Title>{volumeInfo.title}</S.Title>
-        <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
-          {showDescription ? 'Hide' : 'Show'} description
-        </S.DescriptionButton>
-        <S.BookDescription showDescription={showDescription}>
-          {volumeInfo.description || 'No description provided'}
-        </S.BookDescription>
         <S.Author>
           {volumeInfo.authors?.length ? volumeInfo.authors.join(', ') : 'No author data'}
         </S.Author>
-        <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
-          {showDescription ? 'Hide' : 'Show'} description
-        </S.DescriptionButton>
+
+        <S.BookDescription showDescription={showDescription}>
+          {volumeInfo.description || 'No description provided'}
+        </S.BookDescription>
+
+        <S.ButtonsWrapper>
+          <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
+            {showDescription ? 'Hide' : 'Show'} description
+          </S.DescriptionButton>
+          <S.DetailsButton>Details</S.DetailsButton>
+        </S.ButtonsWrapper>
       </S.BookDetails>
     </S.Book>
   );
