@@ -33,6 +33,8 @@ describe('<BooksList />', () => {
         },
       },
     ],
+    toogleModal: () => undefined,
+    setSelectedBook: () => undefined,
   };
 
   test('renders without crashing', async () => {
@@ -49,6 +51,8 @@ describe('<BooksList />', () => {
     const bookProps: BooksListProps = {
       isFetchingBooks: false,
       books: [],
+      toogleModal: () => undefined,
+      setSelectedBook: () => undefined,
     };
     const { container } = render(<BooksList {...bookProps} />);
     expect(container.children[0].children.length).toBe(0);
@@ -58,6 +62,8 @@ describe('<BooksList />', () => {
     const bookProps: BooksListProps = {
       isFetchingBooks: true,
       books: [],
+      toogleModal: () => undefined,
+      setSelectedBook: () => undefined,
     };
     const { container } = render(<BooksList {...bookProps} />);
     expect(container.children[0].children.length).toBe(1);

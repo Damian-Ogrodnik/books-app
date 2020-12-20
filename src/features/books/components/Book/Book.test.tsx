@@ -19,13 +19,18 @@ describe('<Book />', () => {
     },
   };
 
+  const actionProps = {
+    toogleModal: () => undefined,
+    setSelectedBook: () => undefined,
+  };
+
   test('renders without crashing', async () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Book {...bookProps} />, div);
+    ReactDOM.render(<Book {...bookProps} {...actionProps} />, div);
   });
 
   test('it always renders book cover', () => {
-    const { getByRole } = render(<Book {...bookProps} />);
+    const { getByRole } = render(<Book {...bookProps} {...actionProps} />);
     expect(getByRole('img')).toBeTruthy();
   });
 
@@ -42,7 +47,7 @@ describe('<Book />', () => {
         },
       },
     };
-    const { findByText } = render(<Book {...bookProps} />);
+    const { findByText } = render(<Book {...bookProps} {...actionProps} />);
     const information = await findByText('No description provided');
 
     expect(information).toBeTruthy();
@@ -61,7 +66,8 @@ describe('<Book />', () => {
         },
       },
     };
-    const { findByText } = render(<Book {...bookProps} />);
+
+    const { findByText } = render(<Book {...bookProps} {...actionProps} />);
     const information = await findByText('No author data');
 
     expect(information).toBeTruthy();

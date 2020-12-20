@@ -12,13 +12,17 @@ export class BooksService {
     return this.httpService
       .GET<BooksData>(
         `${apiEndpoints.books}?q=
-        ${bookTitle && `intitle:${bookTitle}`}
-        ${bookAuthor && `+inauthor:${bookAuthor}`}
+        ${bookTitle && `intitle:${this.transformToProperQuery(bookTitle)}`}
+        ${bookAuthor && `+inauthor:${this.transformToProperQuery(bookAuthor)}`}
         ${nextBookIndex && `&startIndex=${nextBookIndex}`}
         ${this.booksOnRequest && `&maxResults=${this.booksOnRequest}`}
         &projection=full
         `.replace(/ /g, ''),
       )
       .pipe(map(data => data));
+  }
+
+  transformToProperQuery(str: string) {
+    return str.replace(' ', '+');
   }
 }

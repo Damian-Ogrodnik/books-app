@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { fontSize, colors } from 'config/variablesConfig';
 import { mediaQueriesHelper } from 'common/helpers/mediaQueriesHelper';
+import { Button } from 'common/components/styles';
 
 export const Book = styled.section`
   display: grid;
@@ -20,6 +21,7 @@ export const Book = styled.section`
 
 export const Title = styled.h3`
   font-size: ${fontSize.big};
+  margin-bottom: 0.25rem;
 
   ${mediaQueriesHelper.small} {
     font-size: ${fontSize.normal};
@@ -33,23 +35,16 @@ export const CoverImage = styled.img`
 
 export const BookDetails = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Author = styled.p`
   font-size: ${fontSize.small};
   font-style: italic;
   text-transform: capitalize;
-`;
 
-export const Button = styled.button`
-  cursor: pointer;
-  display: block;
-  background-color: ${colors.lightOrange};
-  color: ${colors.white};
-  border: 3px solid ${colors.lightOrange};
-  border-radius: 10px;
-  text-transform: uppercase;
-  padding: 0.5rem;
+  margin: 0;
 `;
 
 export const DescriptionButton = styled(Button)`
@@ -69,5 +64,19 @@ export const BookDescription = styled.p<BookDescriptionProps>`
 
   ${mediaQueriesHelper.small} {
     display: ${({ showDescription }) => (showDescription ? 'block' : 'none')};
+  }
+`;
+
+export const DetailsButton = styled(Button)``;
+
+export const ButtonsWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  ${mediaQueriesHelper.medium} {
+    margin-top: 1rem;
+    justify-content: space-between;
   }
 `;
