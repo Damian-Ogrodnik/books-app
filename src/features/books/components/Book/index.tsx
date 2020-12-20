@@ -38,9 +38,11 @@ export const Book: React.FC<BookData & ActionProps> = ({
         </S.BookDescription>
 
         <S.ButtonsWrapper>
-          <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
-            {showDescription ? 'Hide' : 'Show'} description
-          </S.DescriptionButton>
+          {volumeInfo.description && (
+            <S.DescriptionButton onClick={() => setShowDescription(!showDescription)}>
+              {showDescription ? 'Hide' : 'Show'} description
+            </S.DescriptionButton>
+          )}
           <S.DetailsButton onClick={openDetailsModal}>Details</S.DetailsButton>
         </S.ButtonsWrapper>
       </S.BookDetails>
