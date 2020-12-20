@@ -54,12 +54,12 @@ export const Description = styled.p`
 `;
 
 export const BookCover = styled.img`
-  width: 10rem;
   height: 15rem;
+  width: 12rem;
 `;
 
 export const Title = styled.h3`
-  margin: 0.25rem 0rem;
+  margin: 0.25rem 2.5rem 0.25rem 0rem;
 `;
 
 export const DetailRow = styled.p`

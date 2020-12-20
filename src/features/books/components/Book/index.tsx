@@ -4,6 +4,7 @@ import { Book as BookData, BookInfo } from 'features/books/models';
 import DefaultCover from 'assets/images/DefaultCover.png';
 
 import * as S from './styles';
+import { validateAuthors, validateDescription } from 'features/books/helpers';
 
 interface ActionProps {
   setSelectedBook(book: BookInfo): void;
@@ -30,12 +31,9 @@ export const Book: React.FC<BookData & ActionProps> = ({
       />
       <S.BookDetails>
         <S.Title>{volumeInfo.title}</S.Title>
-        <S.Author>
-          {volumeInfo.authors?.length ? volumeInfo.authors.join(', ') : 'No author data'}
-        </S.Author>
-
+        <S.Author>{validateAuthors(volumeInfo.authors)}</S.Author>
         <S.BookDescription showDescription={showDescription}>
-          {volumeInfo.description || 'No description provided'}
+          {validateDescription(volumeInfo.description)}
         </S.BookDescription>
 
         <S.ButtonsWrapper>
