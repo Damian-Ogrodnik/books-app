@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { colors } from 'config/variablesConfig';
 import Loupe from 'assets/images/loupe.svg';
+
 import { mediaQueriesHelper } from 'common/helpers/mediaQueriesHelper';
 
 export const NavBar = styled.nav`
@@ -22,7 +23,8 @@ export const NavBar = styled.nav`
 
 export const BooksSearch = styled.header`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 
   ${mediaQueriesHelper.medium} {
     justify-content: center;
@@ -75,5 +77,14 @@ export const SearchButton = styled.button`
     width: 100%;
     border: 0;
     border-radius: 0;
+  }
+`;
+
+export const Logo = styled.img`
+  width: 3rem;
+  height: 3rem;
+
+  ${mediaQueriesHelper.medium} {
+    display: none;
   }
 `;

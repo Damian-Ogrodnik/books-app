@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent } from 'react';
 
 import { SearchPayload } from 'features/books/models';
+import Logo from 'assets/images/book.svg';
 
 import * as S from './styles';
 
@@ -17,6 +18,7 @@ export const BooksSearch: React.FC<BooksSearchProps> = ({
 }) => (
   <S.NavBar>
     <S.BooksSearch>
+      <S.Logo src={Logo} alt="Book logo" />
       <S.Form onSubmit={handleSearch}>
         <S.InputFieldWrapper>
           <S.InputField
