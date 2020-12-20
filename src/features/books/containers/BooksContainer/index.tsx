@@ -12,7 +12,7 @@ import {
   getNextBookIndex,
   getNumberOfFoundedBooks,
 } from '../../selectors/booksSelector';
-import { BookInfo, SearchPayload } from '../../models';
+import { SelectedBookData, SearchPayload } from '../../models';
 import * as S from './styles';
 
 export const BooksContainer: React.FC = () => {
@@ -22,7 +22,7 @@ export const BooksContainer: React.FC = () => {
   });
   const [displayInstruction, setDisplayInstruction] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedBook, setSelectedBook] = useState<BookInfo>();
+  const [selectedBook, setSelectedBook] = useState<SelectedBookData>();
 
   const books = useSelector(getBooks);
   const nextBookIndex = useSelector(getNextBookIndex);

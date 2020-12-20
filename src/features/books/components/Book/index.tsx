@@ -1,25 +1,26 @@
 import { useState } from 'react';
 
-import { Book as BookData, BookInfo } from 'features/books/models';
+import { Book as BookData, SelectedBookData } from 'features/books/models';
 import DefaultCover from 'assets/images/DefaultCover.png';
 
 import * as S from './styles';
 import { validateAuthors, validateDescription } from 'features/books/helpers';
 
 interface ActionProps {
-  setSelectedBook(book: BookInfo): void;
+  setSelectedBook(book: SelectedBookData): void;
   toogleModal(): void;
 }
 
 export const Book: React.FC<BookData & ActionProps> = ({
   volumeInfo,
+  saleInfo,
   toogleModal,
   setSelectedBook,
 }) => {
   const [showDescription, setShowDescription] = useState(false);
 
   const openDetailsModal = () => {
-    setSelectedBook(volumeInfo);
+    setSelectedBook({ ...volumeInfo, saleInfo });
     toogleModal();
   };
 
