@@ -17,4 +17,4 @@ Build:
 
 - `npm run build`
 
-Also you can check [LIVE DEMO](https://dogrodnik.github.io/books-app/) without installing project locally.
+Also you can check [LIVE DEMO](https://damian-ogrodnik.github.io/books-app/) without installing project locally.
